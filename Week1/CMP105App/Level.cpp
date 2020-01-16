@@ -7,7 +7,7 @@ Level::Level(sf::RenderWindow* hwnd)
 	// initialise game objects
 	//Red rectangle
 	rectr.setSize(sf::Vector2f(250,200 ));
-	rectr.setPosition(100, 100);
+	rectr.setPosition(950, 400);
 	rectr.setFillColor(sf::Color::Red);
 
 	//Green rectangle
@@ -51,17 +51,20 @@ void Level::handleInput()
 // Update game objects
 void Level::update()
 {
-	
+	sf::Vector2u pos = window->getSize();
+	sf::Vector2f rectsize = rectr.getSize();
+	rectr.setPosition(pos.x - rectsize.x, pos.y - rectsize.y);
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
+	
 	window->draw(rectr);
-	window->draw(rectg);
-	window->draw(rectb);
-	window->draw(text);
+	//window->draw(rectg);
+	//window->draw(rectb);
+	//window->draw(text);
 	//window->draw(circle);
 	endDraw();
 }
